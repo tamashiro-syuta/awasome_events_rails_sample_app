@@ -53,3 +53,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # viewテンプレートにhamlを使用
 gem 'hamlit-rails', '~> 0.2.3'
+
+# HTMLをhamlに変換
+gem 'html2haml', '~> 2.2.0'
