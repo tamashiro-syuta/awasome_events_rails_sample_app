@@ -53,3 +53,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # viewテンプレートにhamlを使用
 gem 'hamlit-rails', '~> 0.2.3'
+
+# omniauthを用いてoauthログイン
+gem 'omniauth', '~> 1.9.1'
+gem 'omniauth-github', '~> 1.4.0'
+gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
