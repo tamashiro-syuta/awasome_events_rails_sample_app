@@ -74,9 +74,9 @@ bin/rails test
 ## ER図
 ```mermaid
 erDiagram
-  User ||--o{ Event : "1人のユーザーは0以上の投稿を持つ"
-  User ||--o{ Ticket: "1人のユーザーは0以上のコメントを持つ"
-  Event ||--o{ Ticket: "1つの投稿は0以上のコメントを持つ"
+  User ||--o{ Event : ""
+  User ||--o{ Ticket: ""
+  Event ||--o{ Ticket: ""
 
   User {
     uid string
