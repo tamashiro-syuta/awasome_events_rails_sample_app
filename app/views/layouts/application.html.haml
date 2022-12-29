@@ -13,6 +13,7 @@
         = link_to "AwasomeEvents", root_path, class: "navbar-brand mr-auto"
         %ul.navbar-nav
           %li.nav-item
+            -# OmniAuthがRackミドルウェアとして動作し、"/auth/:provider"に飛ぶと、認証処理が走るようになっている
             = link_to "GitHubでログイン", "/auth/github", class: "nav-link", method: :post
     .container
     = yield
