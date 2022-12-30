@@ -16,4 +16,7 @@
             -# OmniAuthがRackミドルウェアとして動作し、"/auth/:provider"に飛ぶと、認証処理が走るようになっている
             = link_to "GitHubでログイン", "/auth/github", class: "nav-link", method: :post
     .container
+      - if flash.notice
+        .alert.alert-success
+          = flash.notice
     = yield

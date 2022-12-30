@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # ログイン後のcallback先とアクションを紐付ける
+  get "/auth/:provider/callback" => "sessions#create"
 end
