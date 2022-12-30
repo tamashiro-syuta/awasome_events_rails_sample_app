@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   # ログイン後のcallback先とアクションを紐付ける
   get "/auth/:provider/callback" => "sessions#create"
+  delete "/logout" => "sessions#destroy"
 end
