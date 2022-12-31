@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   validates :content, length: { maximum: 2000 }, presence: true
   varidates :start_at, presence: true
   varidates :end_at, presence: true
+  # メソッドもバリデーションできる
   validates :start_at_should_be_before_end_at
 
   private
