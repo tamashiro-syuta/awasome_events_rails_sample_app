@@ -23,6 +23,10 @@ module AwasomeEventsRailsSampleApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    # タイムゾーンを日本語に設定(まだDBに保存される値は、UTCに変換される(DBのカラムを直接参照しない限りはJSTを扱っているのと変わらない) )
+    config.time_zone = "Tokyo"
+    # デフォルトタイムゾーンをローカルにすることでDBに変換
+    config.active_record.default_timezone = :local
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
