@@ -16,7 +16,6 @@
             = link_to "イベントを作る", new_event_path, class: "nav-link"
           - if logged_in?
             %li.nav-item
-              -# OmniAuthがRackミドルウェアとして動作し、"/auth/:provider"に飛ぶと、認証処理が走るようになっている
               = link_to "ログアウト", logout_path, class: "nav-link", method: :delete
           - else
             %li.nav-item
