@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  # ユーザーが作成したイベントだと理解しやすいように、created_eventsという名前で定義(通常なら、モデル名であるeventにする)
+  # モデル名と異なる関連付けを追加したので、オプションのclass_nameで、どのクラスと紐つけるのか指定
+  # 外部キーも、デフォルトのuser_idでないカラムと紐つけるので、オプションのforeign_keyで、紐付けるカラムを指定
+  has_many :created_events, class_name: "Event", foreign_key: "owner_id"
+
   def self.find_or_create_from_auth_hash!(auth_hash)
     provider = auth_hash[:provider]
     uid = auth_hash[:uid]
