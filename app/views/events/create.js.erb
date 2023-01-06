@@ -1,0 +1,4 @@
+<%# form_withなどによるajaxのレスポンスにjavasriptが返ってくると、そのjavascriptはブラウザで実行されるため。jsで記述 %>
+<%# errorsという部分点プレートを呼び出し、その結果をjというメソッドに渡している。これを文字列としてidがerrorsの要素に入れてる %>
+<%# jは、escape_javascriptのエイリアス %>
+document.getElementById("errors").innerHTML = "<%= j render("errors", errors: @event.errors) %>"

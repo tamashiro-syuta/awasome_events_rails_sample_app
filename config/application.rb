@@ -19,18 +19,11 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module AwasomeEventsRailsSampleApp
+module AwesomeEvents
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    # タイムゾーンを日本語に設定(まだDBに保存される値は、UTCに変換される(DBのカラムを直接参照しない限りはJSTを扱っているのと変わらない) )
     config.time_zone = "Tokyo"
-    # デフォルトタイムゾーンをローカルにすることでDBに変換
-    config.active_record.default_timezone = :local
-
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    # エラーメッセージを日本語に設定（但し、辞書は別途設定が必要）
+    config.i18n.default_locale = :ja
   end
 end
