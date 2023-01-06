@@ -1,5 +1,5 @@
 {
-  "name": "awasome_events_rails_sample_app",
+  "name": "awesome_events_rails_sample_app",
   "private": true,
   "dependencies": {
     "@rails/activestorage": "^6.0.0",
