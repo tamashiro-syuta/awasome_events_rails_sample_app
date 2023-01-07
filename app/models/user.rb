@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # モデル名と異なる関連付けを追加したので、オプションのclass_nameで、どのクラスと紐つけるのか指定
   # 外部キーも、デフォルトのuser_idでないカラムと紐つけるので、オプションのforeign_keyで、紐付けるカラムを指定
   has_many :created_events, class_name: "Event", foreign_key: "owner_id"
+  has_many :tickets
 
   def self.find_or_create_from_auth_hash!(auth_hash)
     provider = auth_hash[:provider]
