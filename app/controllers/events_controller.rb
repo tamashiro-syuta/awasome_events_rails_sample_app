@@ -28,6 +28,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = current_user.created_events.find(params[:id])
+    # 「!」をつけることで何らかの理由で削除に失敗した場合、例外処理が走るので、エラーをキャッチできる
+    # 「!」なしだと、失敗した場合はfalseが返る
+    @event.destroy!
+    redirect_to root_path, notice: "削除しました"
+  end
+
   private
 
   def event_params
