@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create"
   delete "/logout" => "sessions#destroy"
 
+  resource :retirements, only: %i[new create]
+
   # ネストにすることでリソースの親子関係をルーティングで表現
   resources :events do
     resources :tickets
