@@ -6,6 +6,8 @@ class EventsController < ApplicationController
     # includes(:user)は、Tickets取得時に関連するUserオブジェクトを一度に取得する。使わないと@ticketsの要素の数だけSQLクエリが発行されてしまう(N+1問題)
     # https://pikawaka.com/rails/includes <-- わかりやすかった記事
     @tickets = @event.tickets.includes(:user).order(:created_at)
+    # ログイン済みのユーザーがいて、ユーザーのチケットに今表示中のチケットがあれば、それを@ticketに入れる
+    @ticket = current_user && current_user.tickets.find_by(event: @event)
   end
 
   def new
