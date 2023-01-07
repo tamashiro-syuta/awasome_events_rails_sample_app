@@ -47,3 +47,13 @@
     - else
       -# ログイン済みか否かで、表示する内容を変更
       = link_to "参加する", new_event_ticket_path(@event), class: "btn btn-primary btn-lg btn-block"
+    %hr
+    .card.mb-2
+      %h5.card-header 参加者
+      %ul.list-group.list-group-flush
+        - @tickets.each do |ticket|
+          %li.list-group-item
+            = link_to(url_for_github(ticket.user), class: "card-link") do
+              = image_tag ticket.user.image_url, width: 20, height: 20
+              = "@#{ticket.user.name}"
+            = ticket.comment
