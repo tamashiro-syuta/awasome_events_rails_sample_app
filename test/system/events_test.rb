@@ -42,4 +42,19 @@ class EventsTest < ApplicationSystemTestCase
     # 正しくイベントを作成できているか検証
     assert_selector "div.alert", text: "作成しました"
   end
+
+  test "/events/:id ページを表示して削除ボタンを押す" do
+    sign_in_as(FactoryBot.create(:user))
+    # current_userは、sign_in_helperで定義した@current_userを返すメソッド
+    event = FactoryBot.create(:event, owner: current_user)
+    visit event_url(event)
+    # ブロックで渡した処理の実行後(= イベントの削除後)にEvent.countの数が (実行前-1)個 になっていることを検証
+    assert_difference("Event.count", -1) do
+      accept_confirm do
+        click_on "イベントを削除する"
+      end
+      assert_selector "div.alert", text: "削除しました"
+    end
+  end
+
 end
