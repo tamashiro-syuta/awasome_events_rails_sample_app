@@ -1,5 +1,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
+# test_helperをrequireすれば、sign_in_helperも使えるようにログイン用のヘルパーをrequire
+require_relative 'sign_in_helper'
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
