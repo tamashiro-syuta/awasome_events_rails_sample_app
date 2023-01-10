@@ -15,17 +15,11 @@ module SignInHelper
       visit root_url
       # ログインのボタンをクリック(内部では、上でモック化した内容(add_mockメソッドの内容)が返ってきている)
       click_on "GitHubでログイン"
-      @current_user = user
     when respond_to?(:get)
       get "/auth/github/callback"
     else
       raise NotImplementedError.new
     end
-
-    # root_urlに遷移
-    visit root_url
-    # ログインのボタンをクリック(内部では、上でモック化した内容(add_mockメソッドの内容)が返ってきている)
-    click_on "GitHubでログイン"
     @current_user = user
   end
 
