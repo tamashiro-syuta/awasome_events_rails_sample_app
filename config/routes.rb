@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :events do
     resources :tickets
   end
+
+  get "status" => 'status#index', defaults: { format: 'json' }
 end
