@@ -9,6 +9,19 @@ module SignInHelper
       info: { nickname: user.name, image: user.image_url }
     )
 
+    case
+    when respond_to?(:visit)
+      # root_urlに遷移
+      visit root_url
+      # ログインのボタンをクリック(内部では、上でモック化した内容(add_mockメソッドの内容)が返ってきている)
+      click_on "GitHubでログイン"
+      @current_user = user
+    when respond_to?(:get)
+      get "/auth/github/callback"
+    else
+      raise NotImplementedError.new
+    end
+
     # root_urlに遷移
     visit root_url
     # ログインのボタンをクリック(内部では、上でモック化した内容(add_mockメソッドの内容)が返ってきている)
@@ -19,4 +32,9 @@ module SignInHelper
   def current_user
     @current_user
   end
+end
+
+# インテフレーションテストでもログイン処理のヘルパーを使えるようにinclude
+class ActionDispatch::IntegrationTest
+  include SignInHelper
 end
