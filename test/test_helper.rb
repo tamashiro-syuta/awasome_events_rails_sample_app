@@ -3,6 +3,8 @@ require_relative '../config/environment'
 # test_helperをrequireすれば、sign_in_helperも使えるようにログイン用のヘルパーをrequire
 require_relative 'sign_in_helper'
 require 'rails/test_help'
+#  スタブを使えるようにする
+require 'minitest/mock'
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
