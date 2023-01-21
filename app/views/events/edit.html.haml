@@ -24,13 +24,13 @@
   .form-group
     = f.label :image
     -# 画像が存在する かつ 画像が実際にアップロードされたら
-    - if @event.image.attached? && @event.image.blob&.presited?
+    - if @event.image.attached? && @event.image.blob&.persisted?
       -# 200 * 200 にリサイズしたURLを返す(リサイズした画像は設定したストレージに保存されるため、2回目以降は生成されない)
       -# 検証ツールのネットワークタブから画像がそれぞれ別のURLであることがわかる
       -# DBのカラムがサムネ用で増えたわけではない
       = image_tag @event.image.variant(resize_to_fit: [200, 200]), class: "img-thumbanil d-block mb-3"
     = f.file_field :image, class: "form-control-file"
-  - if @event.image.attached? && @event.image.blob&.presited?
+  - if @event.image.attached? && @event.image.blob&.persisted?
     .checkbox
       %label
         = f.check_box :remove_image
