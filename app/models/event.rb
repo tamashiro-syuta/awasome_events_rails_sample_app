@@ -1,5 +1,7 @@
 class Event < ApplicationRecord
-  has_one_attached :image
+  # [has_one_attached :image] これでeventとactive storageがimageというカラムで繋がる
+  # [dependent: false]イベントが削除された時に関連するActiveStorage::Attachmentのみが削除される
+  has_one_attached :image, dependent: false
   has_many :tickets, dependent: :destroy
   belongs_to :owner, class_name: "User"
 
