@@ -26,5 +26,9 @@ module AwesomeEvents
     # エラーメッセージを日本語に設定（但し、辞書は別途設定が必要）
     config.i18n.default_locale = :ja
     config.active_storage.variant_processor = :vips
+    # 独自に定義したエラーが発生した時にpublic/500.html以外を返したい時は以下のように設定する
+    config.action_dispatch.rescue_responses.merge!(
+      "独自に定義したエラー" => :not_found
+    )
   end
 end
