@@ -24,7 +24,9 @@
   .form-group
     = f.label :image
     - if @event.image.attached?
-      = image_tag @event.image, class: "img-thumbanil d-block mb-3", width: 200, height: 200
+      -# 200 * 200 にリサイズしたURLを返す(リサイズした画像は設定したストレージに保存されるため、2回目以降は生成されない)
+      -# 検証ツールのネットワークタブから画像がそれぞれ別のURLであることがわかる
+      = image_tag @event.image.variant(resize_to_fit: [200, 200]), class: "img-thumbanil d-block mb-3"
     = f.file_field :image, class: "form-control-file"
   - if @event.image.attached?
     .checkbox

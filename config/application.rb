@@ -25,5 +25,6 @@ module AwesomeEvents
     config.time_zone = "Tokyo"
     # エラーメッセージを日本語に設定（但し、辞書は別途設定が必要）
     config.i18n.default_locale = :ja
+    config.active_storage.variant_processor = :vips
   end
 end
