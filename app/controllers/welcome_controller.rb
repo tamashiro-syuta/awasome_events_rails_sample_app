@@ -3,6 +3,10 @@ class WelcomeController < ApplicationController
   skip_before_action :authenticate
 
   def index
-    @events = Event.where("start_at > ?", Time.zone.now).order(:start_at)
+    @events = Event.page(params[:page]).per(5).
+      where("start_at > ?", Time.zone.now).order(:start_at)
+
+    puts "@events"
+    puts @events
   end
 end
