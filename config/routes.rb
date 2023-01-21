@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   end
 
   get "status" => 'status#index', defaults: { format: 'json' }
+
+  # routes.rbに定義されていないURLへのリクエストは、RackMiddleWareで発生するので、コントローラーレベルで定義しているrescue_fromではキャッチできない
+  # なので、以下で全てのURLをキャッチする設定を追加(知らないURLは404用ページへルーティング)
+  match "*path" => "application#error404", via: :all
 end
