@@ -10,6 +10,13 @@ class Event < ApplicationRecord
   validates :content, length: { maximum: 2000 }, presence: true
   validates :start_at, presence: true
   validates :end_at, presence: true
+  validates :image,
+    # 画像の形式を限定
+    content_type: [:png, :jpg, :jpeg],
+    # 10mb以上はNG
+    size: { less_than_or_equal_to: 10.megabytes },
+    # 縦 or 横 が2000以上はNG
+    dimension: { width: { max: 2000 }, height: { max:2000 } }
   # validatesは標準のバリデーション、validateは独自のバリデーションメソッド
   validate :start_at_should_be_before_end_at
 
