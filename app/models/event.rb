@@ -11,12 +11,23 @@ class Event < ApplicationRecord
   # validatesは標準のバリデーション、validateは独自のバリデーションメソッド
   validate :start_at_should_be_before_end_at
 
+  # 画像削除の際の属性'remove_image'は、独自で定義したものなので、明示的にmodelで定義する必要がある
+  attr_accessor :remove_image
+
+  # 保存前にremove_image_if_user_acceptを行うコールバックを設定
+  before_save :remove_image_if_user_accept
+
   def created_by?(user)
     return false unless user
     owner_id == user.id
   end
 
   private
+
+  # remove_imageがtrue(チェック済み)であればimageカラムをnilに設定
+  def remove_image_if_user_accept
+    self.image = nil if ActiveRecord::Type::Boolean.new.cast(remove_image)
+  end
 
   # start_atはend_atよりも前の時間
   def start_at_should_be_before_end_at
