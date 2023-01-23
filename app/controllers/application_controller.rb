@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   # logged_in?メソッドとcurrent_userをヘルパーメソッドとして使うよの宣言
   helper_method :logged_in?, :current_user
 
-  # rescueは、後ろに登録したものから順番に判定されるため、Exceptionは一番上に定義している
-  rescue_from Exception, with: :error500
-  rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :error404
+  # rescueは、後ろに登録したものから順番に判定されるため、Exceptionは一番上に定義している(エラーの握りつぶしになってるのでコメントアウト)
+  # rescue_from Exception, with: :error500
+  rescue_from ActionController::RoutingError, with: :error404
 
   private
 
